@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/confiWebApp/static/css/main.1ede808e.css",
+    "main.js": "/confiWebApp/static/js/main.c7d8ea80.js",
+    "index.html": "/confiWebApp/index.html",
+    "main.1ede808e.css.map": "/confiWebApp/static/css/main.1ede808e.css.map",
+    "main.c7d8ea80.js.map": "/confiWebApp/static/js/main.c7d8ea80.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1ede808e.css",
+    "static/js/main.c7d8ea80.js"
+  ]
+}
