@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    <style>
+        #map {
+            height: 25rem;
+        }
+
+        #header {
+            height: 8rem;
+            width: auto;
+            background-color: darkslategray;
+            margin-bottom: 5rem;
+        }
+        button {
+            background-color: darkslategray;
+            width: 8rem;
+            height: 6rem;
+        }
+
+        #divFlex {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <h3>Select location</h3>
+    <div id="map"></div>
+    <div id="divFlex" >
+        <button>Confirm</button>
+    </div>
+    <script>
+        const map = L.map('map');
+        let coordinates = L.latLng(0, 0);
+        let marker;
+
+        navigator.geolocation.getCurrentPosition((position) => {
+            coordinates = position.coords;
+            const { latitude, longitude } = coordinates;
+            
+            map.setView([latitude, longitude], 15);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 17
+            }).addTo(map);
+
+            marker = L.marker([latitude, longitude], { draggable: true,}).addTo(map);
+            marker.on('move', (e) => latitude = e.latLng);
+        });
+    </script>
+</body>
+</html>
